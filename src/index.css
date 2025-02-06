@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased bg-[#f8f7f5];
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+  
+  .font-sans {
+    font-family: "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.4s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer components {
+  .hover-underline {
+    @apply relative;
+  }
+  
+  .hover-underline::after {
+    @apply content-[''] absolute left-0 bottom-0 w-0 h-px bg-current transition-all duration-300;
+  }
+  
+  .hover-underline:hover::after {
+    @apply w-full;
+  }
+  
+  .card-zoom {
+    @apply transition-all duration-500;
+    perspective: 1000px;
+  }
+  
+  .card-zoom:hover {
+    transform: scale(1.02) translateY(-4px);
+  }
+  
+  .card-zoom:hover img {
+    transform: scale(1.1) rotateY(2deg);
+  }
+  
+  .card-zoom img {
+    @apply transition-all duration-500;
+  }
+}
